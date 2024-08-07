@@ -1,0 +1,30 @@
+h1,
+h2 {
+  text-align: center;
+}
+body {
+  height: 100vh;
+  /* background: linear-gradient(to top, #2987e4 75%, #16191e 30%); */
+  background: url(assets/pexels-apgpotr-683039.jpg);
+  background-size: contain;
+}
+label {
+  color: white;
+  font-size: large;
+}
+input {
+  background-color: transparent;
+  outline: none;
+}
+input::content {
+  color: white;
+}
+.contain {
+  border: 1px solid;
+  background-color: rgba(16, 11, 2, 0.658);
+  border-radius: 10px;
+}
+th,
+td {
+  color: white;
+}

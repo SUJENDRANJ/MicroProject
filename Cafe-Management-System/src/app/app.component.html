@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <br />
+    <br />
+
+    <h1 class="p-3 w-50 m-0 mt-5 mx-auto text-light">
+      Cafe Management System ☕
+    </h1>
+    <br />
+    <div class="container w-50 p-5 contain">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <form #myForm="ngForm">
+            <div class="form-group">
+              <label for="Table number"> Table number </label>
+              <input
+                type="text"
+                class="form-control"
+                name="id"
+                #id="ngModel"
+                ngModel
+                pattern="[0-9]+"
+                required
+              />
+            </div>
+
+            <div *ngIf="id.touched">
+              <div *ngIf="id.errors?.['required']">
+                <b style="color: red">Table number Required.</b>
+              </div>
+              <div *ngIf="id.errors?.['pattern']">
+                <font color="red">Invalid Table number.</font>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="Coffee Name"> Coffee Name </label>
+              <input
+                type="text"
+                class="form-control"
+                name="cName"
+                #cName="ngModel"
+                ngModel
+              />
+            </div>
+            <div class="form-group">
+              <label for="Coffe Price"> Price </label>
+              <input
+                type="text"
+                class="form-control"
+                name="cost"
+                #cost="ngModel"
+                ngModel
+              />
+            </div>
+
+            <button class="btn btn-success" (click)="insert(myForm.value)">
+              Insert
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="update(myForm.value)">
+              Update</button
+            >&nbsp;&nbsp;
+            <button class="btn btn-danger" (click)="delete(myForm.value)">
+              Delete</button
+            >&nbsp;&nbsp;
+            <button class="btn btn-warning" (click)="find(myForm.value)">
+              Find
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-info" (click)="findAll()">Find All</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br />
+    <h2 class="text-light">{{ result }}</h2>
+    <br />
+    <div style="width: 100%" *ngIf="flag">
+      <table width="80%" align="center" class="table table-borderd">
+        <tr>
+          <th>Table number</th>
+          <th>Coffee Name</th>
+          <th>Price</th>
+        </tr>
+        <tr *ngFor="let i of coffeeArr">
+          <td>{{ i.id }}</td>
+          <td>{{ i.cName }}</td>
+          <td>{{ i.cost }}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
